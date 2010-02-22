@@ -1,0 +1,3 @@
+A file monitor for Java (OSGi) applications.
+
+It uses a system function to notifiy listeners about changes in the filesystem.
