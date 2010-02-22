@@ -5,4 +5,5 @@
    <service>
       <provide interface="file.monitor.core.FileMonitor"/>
    </service>
+   <reference bind="bind" cardinality="1..1" interface="org.osgi.service.log.LogService" name="LogService" policy="dynamic" unbind="unind"/>
 </scr:component>

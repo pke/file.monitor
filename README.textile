@@ -1,3 +1,37 @@
 A file monitor for Java (OSGi) applications.
 
-It uses a system function to notifiy listeners about changes in the filesystem.
+{toc}
+
+
+h1. Introduction
+
+It uses a system function to notifiy listeners about changes in the file-system.
+
+
+h1. Usage
+
+h2. General
+
+Some examples of usage are:
+
+h2. In an OSGi environment
+
+The code was developed for OSGi environments in mind. All provided jars are valid OSGi bundles.
+
+
+h1. Implementations
+
+
+h2. Supported file-systems
+
+Currently there is only a Win32 implementation based on "ReadDirectoryChangesW":http://msdn.microsoft.com/en-us/library/aa365465%28VS.85%29.aspx.
+Feel free to fork this repository and add an implementation for your file-system.
+
+h2. OSGi support
+
+The @file.monitor.osgi.event@ implements an FileListener that translates the FileEvent into a EventAdmin event with topic and properties.
+ 
+
+h1. License
+
+This code and the accompanying materials are made available under the terms of the "Eclipse Public License v1.0":http://www.eclipse.org/legal/epl-v10.html which accompanies this distribution, and is available at "http://www.eclipse.org/legal/epl-v10.html":http://www.eclipse.org/legal/epl-v10.html.
