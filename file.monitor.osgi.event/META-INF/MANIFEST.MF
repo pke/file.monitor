@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: file.monitor.osgi.event
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Description: %Bundle-Description
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: file.monitor.core,
+ org.osgi.service.component,
+ org.osgi.service.event;version="1.2.0"
+Export-Package: file.monitor.osgi.event
+Service-Component: OSGI-INF/FileListener.xml

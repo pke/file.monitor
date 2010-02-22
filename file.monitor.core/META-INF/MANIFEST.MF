@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: file.monitor.core
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: %Bundle-Vendor
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-ContactAddress: %Bundle-ContactAddress
+Bundle-Category: %Bundle-Category
+Bundle-Description: %Bundle-Description
+Export-Package: file.monitor.core

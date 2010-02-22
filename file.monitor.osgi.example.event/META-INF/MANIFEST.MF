@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: file.monitor.osgi.example.event
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Service-Component: OSGI-INF/FileEventHandler.xml
+Import-Package: org.eclipse.osgi.event;version="1.0.0",
+ org.osgi.service.event,
+ org.osgi.service.log;version="1.3.0"

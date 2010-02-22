@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="file.monitor.example.osgi.log">
+   <implementation class="file.monitor.osgi.example.log.internal.FileListenerImpl"/>
+   <property name="file.name" type="String" value="c:/test"/>
+   <service>
+      <provide interface="file.monitor.core.FileListener"/>
+   </service>
+   <reference bind="bind" cardinality="1..1" interface="org.osgi.service.log.LogService" name="LogService" policy="dynamic" unbind="unbind"/>
+</scr:component>
