@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-ContactAddress: %Bundle-ContactAddress
+Bundle-SymbolicName: file.monitor.win32
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: com.sun.jna,
+ com.sun.jna.examples.win32,
+ com.sun.jna.ptr,
+ com.sun.jna.win32,
+ file.monitor.core,
+ org.osgi.framework;version="1.5.0",
+ org.osgi.service.component
+Export-Package: file.monitor.windows;version="1.0.0"
+Eclipse-PlatformFilter: (&(osgi.os=win32))
