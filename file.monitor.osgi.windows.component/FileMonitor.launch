@@ -14,11 +14,11 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true -Dorg.ops4j.pax.logging.DefaultServiceLog.level=TRACE"/>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:file.monitor.osgi.win32.component}"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:file.monitor.osgi.windows.component}"/>
 <stringAttribute key="pde.version" value="3.3"/>
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="target_bundles" value="org.eclipse.equinox.event@default:default,org.eclipse.osgi.services@default:default,org.eclipse.osgi@-1:true,org.ops4j.pax.confman.pax-confman-propsloader@default:true,org.ops4j.pax.logging.pax-logging-service@1:true,org.eclipse.equinox.util@default:default,org.eclipse.equinox.ds@default:true,org.ops4j.pax.logging.pax-logging-api@1:true,com.sun.jna@default:default,org.eclipse.equinox.cm@2:true"/>
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="file.monitor.osgi.example.log@default:true,file.monitor.core@default:default,file.monitor.win32@default:true,com.sun.jna.examples.win32@default:default,file.monitor.osgi.event@default:default,file.monitor.osgi.example.event@default:default,file.monitor.osgi.win32.component@default:default"/>
+<stringAttribute key="workspace_bundles" value="file.monitor.osgi.example.log@default:true,file.monitor.core@default:default,file.monitor.osgi.windows.component@default:true,file.monitor.osgi.component@default:default,com.sun.jna.examples.win32@default:default,file.monitor.osgi.event@default:default,file.monitor.osgi.example.event@default:default,file.monitor.windows@default:default"/>
 </launchConfiguration>

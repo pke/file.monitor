@@ -133,7 +133,7 @@ public abstract class AbstractWindowsFileMonitor extends AbstractFileMonitor {
 		Kernel32.INSTANCE.PostQueuedCompletionStatus(this.port, 0, null, null);
 	}
 
-	protected synchronized void dispose() {
+	public synchronized void dispose() {
 		super.dispose();
 
 		wakeUp();

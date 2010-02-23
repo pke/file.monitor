@@ -17,13 +17,13 @@ import file.monitor.core.FileEvent;
 import file.monitor.core.FileListener;
 
 /**
- * Concreate implementation of a Windows file monitor.
+ * Concreate implementation of a Windows file monitor with listener management.
  * 
  * @author <a href="mailto:phil.kursawe@gmail.com">Philipp Kursawe</a>
- *
+ * 
  */
 public class WindowsFileMonitor extends AbstractWindowsFileMonitor {
-	
+
 	private Set<FileListener> listeners = new HashSet<FileListener>();
 
 	@Override
@@ -33,11 +33,10 @@ public class WindowsFileMonitor extends AbstractWindowsFileMonitor {
 		}
 	}
 
-	
 	public void addListener(FileListener listener) {
 		listeners.add(listener);
 	}
-	
+
 	public void removeListener(FileListener listener) {
 		listeners.remove(listener);
 	}

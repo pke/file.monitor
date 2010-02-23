@@ -8,7 +8,7 @@
  * Contributors:
  *   Philipp Kursawe (phil.kursawe@gmail.com) - initial API and implementation
  ******************************************************************************/
-package file.monitor.osgi.windows.component.internal;
+package file.monitor.osgi.component;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,9 +20,9 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.log.LogService;
 
+import file.monitor.core.AbstractFileMonitor;
 import file.monitor.core.FileEvent;
 import file.monitor.core.FileListener;
-import file.monitor.windows.AbstractWindowsFileMonitor;
 
 /**
  * <p>
@@ -38,13 +38,20 @@ import file.monitor.windows.AbstractWindowsFileMonitor;
  * @author <a href="mailto:phil.kursawe@gmail.com">Philipp Kursawe</a>
  *
  */
-public class FileMonitorComponent extends AbstractWindowsFileMonitor {
+public abstract class FileMonitorComponent  {
 
 	private ComponentContext context;
 
 	AtomicReference<LogService> logRef = new AtomicReference<LogService>();
-
+	
+	private final AbstractFileMonitor monitor ;
 	private File[] lastWatches;
+
+	public FileMonitorComponent() {
+		this.monitor = createMonitor(); 
+	}
+	
+	protected abstract AbstractFileMonitor createMonitor();
 
 	protected void bind(LogService log) {
 		logRef.set(log);
@@ -60,7 +67,7 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 	}
 
 	protected void deactivate() {
-		dispose();
+		monitor.dispose();
 	}
 
 	interface FileRunnable {
@@ -89,7 +96,7 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 	protected void addListener(ServiceReference ref) {
 		runForFile(ref, new FileRunnable() {
 			public void run(File file) throws IOException {
-				addWatch(file);
+				monitor.addWatch(file);
 			}
 		});
 	}
@@ -97,7 +104,7 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 	protected void removeListener(ServiceReference ref) {
 		runForFile(ref, new FileRunnable() {
 			public void run(File file) throws IOException {
-				removeWatch(file);
+				monitor.removeWatch(file);
 			}
 		});
 	}
@@ -106,17 +113,16 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 		Object[] listeners = context.locateServices("FileListener"); //$NON-NLS-1$
 		if (listeners != null) {
 			for (Object listener : listeners) {
-				safeNotifyListener((FileListener) listener, event);
+				monitor.safeNotifyListener((FileListener) listener, event);
 			}
 		}
 	}
 
-	@Override
-	public void onListenerException(FileListener listener, Throwable t) {
+	protected void onListenerException(FileListener listener, Throwable t) {
 		if (!logError(t, String.format(
 				"Error calling listener from %s", FrameworkUtil.getBundle( //$NON-NLS-1$
 						listener.getClass()).getSymbolicName()))) {
-			super.onListenerException(listener, t);
+			monitor.onListenerException(listener, t);
 		}
 	}
 	
@@ -140,7 +146,7 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 		if (lastWatches != null) {
 			for (File watch : lastWatches) {
 				if (watch != null) {
-					removeWatch(watch);
+					monitor.removeWatch(watch);
 				}
 			}
 			this.lastWatches = null;
@@ -151,7 +157,7 @@ public class FileMonitorComponent extends AbstractWindowsFileMonitor {
 			for (int i=0; i<watches.length; ++i) {
 				lastWatches[i] = new File(watches[i]);
 				try {
-					addWatch(lastWatches[i]);
+					monitor.addWatch(lastWatches[i]);
 				} catch (IOException e) {
 					logError(e, "Could not add watch for %s", watches[i]); //$NON-NLS-1$
 				}

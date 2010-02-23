@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSGi Component
+Bundle-SymbolicName: file.monitor.osgi.component
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Philipp Kursawe
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: file.monitor.core,
+ org.osgi.framework,
+ org.osgi.service.component,
+ org.osgi.service.log
+Export-Package: file.monitor.osgi.component

@@ -27,6 +27,15 @@ public abstract class AbstractFileMonitor implements FileMonitor {
 		this.fileMap.put(file, info);
 	}
 
+	/**
+	 * Creates a FileInfo for the given file and mask.
+	 * 
+	 * @param file to watch.
+	 * @param eventMask FileEvent.FILE_* mask
+	 * @param recursive
+	 * @return Must <b>never</b> return <code>null</code>.
+	 * @throws IOException
+	 */
 	protected abstract FileInfo createWatch(File file, int eventMask, boolean recursive) throws IOException;
 
 	public synchronized void unwatch(final File file) {
@@ -36,7 +45,7 @@ public abstract class AbstractFileMonitor implements FileMonitor {
 		}
 	}
 
-	protected synchronized void dispose() {
+	public synchronized void dispose() {
 		int i = 0;
 		for (final Object[] keys = this.fileMap.keySet().toArray(); !this.fileMap.isEmpty();) {
 			unwatch((File) keys[i++]);
@@ -68,11 +77,11 @@ public abstract class AbstractFileMonitor implements FileMonitor {
 
 	protected abstract void fireChangeEvent(final FileEvent event);
 	
-	protected void onListenerException(FileListener listener, Throwable t) {
+	public void onListenerException(FileListener listener, Throwable t) {
 		t.printStackTrace(System.err);
 	}
 
-	protected void safeNotifyListener(FileListener listener, FileEvent event) {
+	public void safeNotifyListener(FileListener listener, FileEvent event) {
 		try {
 			listener.fileChanged(event);
 		} catch (Throwable t) {

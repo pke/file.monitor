@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" modified="modified" name="file.monitor.osgi.windows.component">
-   <implementation class="file.monitor.osgi.windows.component.internal.FileMonitorComponent"/>
+   <implementation class="file.monitor.osgi.windows.component.internal.WindowsFileMonitorComponent"/>
    <reference bind="addListener" cardinality="1..n" interface="file.monitor.core.FileListener" name="FileListener" policy="dynamic" unbind="removeListener"/>
    <service>
       <provide interface="file.monitor.core.FileMonitor"/>
