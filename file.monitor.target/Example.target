@@ -5,12 +5,19 @@
 <locations>
 <location path="${eclipse_home}" type="Profile">
 <includeBundles>
-<plugin id="org.eclipse.equinox.util"/>
-<plugin id="org.eclipse.equinox.ds"/>
+<plugin id="org.eclipse.jdt.junit"/>
+<plugin id="org.eclipse.jdt.junit.core"/>
+<plugin id="org.eclipse.jdt.junit4.runtime"/>
 <plugin id="com.sun.jna"/>
-<plugin id="org.eclipse.osgi"/>
 <plugin id="org.eclipse.osgi.services"/>
+<plugin id="org.eclipse.pde.junit.runtime"/>
+<plugin id="org.eclipse.equinox.ds"/>
+<plugin id="org.hamcrest.core"/>
 <plugin id="org.eclipse.equinox.event"/>
+<plugin id="org.eclipse.equinox.util"/>
+<plugin id="org.junit" version="4.8.1.v4_8_1_v20100114-1600"/>
+<plugin id="org.eclipse.jdt.junit.runtime"/>
+<plugin id="org.eclipse.osgi"/>
 </includeBundles>
 </location>
 <location path="${project_loc}" type="Directory"/>
